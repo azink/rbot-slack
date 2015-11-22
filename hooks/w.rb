@@ -1,7 +1,16 @@
-class Ping < SlackRubyBot::Commands::Base
+class W < SlackRubyBot::Commands::Base
   match(/^!w (?<location>.*)/i) do |client, data, match|
     require 'wunderground'
     require 'date'
+
+    if match[:location].empty?
+      if data.user['title'].empty?
+        client.message text: "Report the current conditions of a location. Specify a city, zip, or PWS ID.  To set a default location, edit the 'title' field in your Slack profile.", channel: data.channel
+        return
+      else
+        match[:location] = data.user['title']
+      end
+    end
 
     w = Wunderground.new(ENV['WUNDERGROUND_KEY'])
 
@@ -16,4 +25,3 @@ class Ping < SlackRubyBot::Commands::Base
     end
   end
 end
-
