@@ -23,7 +23,7 @@ class W < SlackRubyBot::Commands::Base
       out += ", precip today: #{wx['precip_today_in']}" if wx['precip_today_in'].to_f > 0
       client.message text: out, channel: data.channel
     else
-      client.message text: "Error occurred or location not found", channel: data.channel
+      client.message text: "Error occurred or location not found: #{location}", channel: data.channel
     end
   end
 end
