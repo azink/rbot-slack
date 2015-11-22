@@ -1,5 +1,5 @@
 class W < SlackRubyBot::Commands::Base
-  match(/^!w(?<location>.*)/i) do |client, data, match|
+  match(/^!w\s?(?<location>.*)/i) do |client, data, match|
     require 'wunderground'
     require 'date'
 
