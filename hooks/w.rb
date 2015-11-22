@@ -3,8 +3,8 @@ class W < SlackRubyBot::Commands::Base
     require 'wunderground'
     require 'date'
 
-    if match[:location].empty?
-      if data.user['title'].empty?
+    if match[:location]
+      if data.user['title']
         client.message text: "Report the current conditions of a location. Specify a city, zip, or PWS ID.  To set a default location, edit the 'title' field in your Slack profile.", channel: data.channel
         return
       else
