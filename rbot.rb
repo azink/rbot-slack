@@ -1,4 +1,5 @@
 require 'slack-ruby-bot'
+require './patches.rb'
 
 module Rbot
   class App < SlackRubyBot::App

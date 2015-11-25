@@ -1,9 +1,9 @@
 class W < SlackRubyBot::Commands::Base
-  match(/^!w\s?(?<location>.*)/i) do |client, data, match|
+  match(/^!w($|\s(?<args>.+$))/i) do |client, data, match|
     require 'wunderground'
     require 'date'
     
-    location = match[:location].empty? ? client.users.find {|f| f['id'] == data['user']}['profile']['title'] : match[:location]
+    location = match[:args].nil? ? find_user(client, data.user)['profile']['title'] : match[:args]
 
     if location.empty?
       client.message text: "Report the current conditions of a location. Specify a city, zip, or PWS ID.  To set a default location, edit the 'What I do' field in your Slack profile.", channel: data.channel
