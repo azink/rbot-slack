@@ -13,3 +13,7 @@ Create a file in hooks.  Follow w.rb and ping.rb for exmaples.  For more details
 
 # Add text random line responders
 Simply add .txt files to db/txt and random_line.rb will pick them up on launch
+
+# Current list of useful hooks:
+* !w - gets the weather from wunderground
+* Random lines: See db/txt for active hooks
