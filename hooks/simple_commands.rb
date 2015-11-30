@@ -8,7 +8,7 @@ class SimpleCommands < SlackRubyBot::Commands::Base
   end
 
   match(/^!(seen|next)/i) do |client, data, match|
-    client.message text: "This isn't 1999, you graybeard.  Use direct messages for !next, and search for !seen.", channel: data.channel
+    client.message text: "This isn't 1999, you graybeard.  Use direct messages or @username for !next, and search for !seen.", channel: data.channel
   end
 
 end 
