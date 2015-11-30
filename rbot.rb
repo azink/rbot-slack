@@ -7,7 +7,7 @@ module Rbot
   class App < SlackRubyBot::App
   end
 
-  Dir['./hooks/*.rb'].each {|f| require f}
+  Dir['./hooks/*.rb'].each {|f| load f}
 end
 
 Daemons.run_proc('rbot-slack', {:log_output => true, :backtrace => true, :dir => 'log'}) do 
