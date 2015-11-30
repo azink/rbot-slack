@@ -1,11 +1,3 @@
-require 'slack-ruby-bot'
-require './patches.rb'
+require 'daemons'
 
-module Rbot
-  class App < SlackRubyBot::App
-  end
-
-  Dir["./hooks/*.rb"].each {|f| require f}
-end
-
-Rbot::App.instance.run
+Daemons.run('./bin/rbot-slack.rb', {:log_output => true, :backtrace => true, :dir => '../log'})

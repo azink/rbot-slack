@@ -1,0 +1,5 @@
+# sample configuration, you must edit at least SLACK_API_TOKEN
+
+ENV['SLACK_API_TOKEN'] = 'your slack API token'
+ENV['WUNDERGROUND_KEY'] = 'other example contstant'
+

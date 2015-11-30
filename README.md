@@ -1,12 +1,10 @@
 # rbot-slack
 A Rubybot implementation for Slack, customized for a cave of hats.
 
-# Launch with:
-```
-export SLACK_API_TOKEN=...token...
-export WUNDERGROUND_KEY=...example env...
-bundle exec ruby rbot.rb
-```
+# Installation and running
+1. Rename config.rb.sample to config.rb
+2. Edit config.rb and replace config items
+3. Launch with `bundle exec ruby rbot.rb start`
 
 # Add hooks
 Create a file in hooks.  Follow w.rb and ping.rb for exmaples.  For more details and examples see https://github.com/dblock/slack-ruby-bot

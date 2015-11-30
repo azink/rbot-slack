@@ -8,6 +8,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.8)
+    daemons (1.2.3)
     eventmachine (1.0.8)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
@@ -17,7 +18,7 @@ GEM
       faraday (~> 0.9.0)
       faraday_middleware (~> 0.9.1)
       oj (~> 2.0)
-    faye-websocket (0.10.1)
+    faye-websocket (0.10.2)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.5.1)
     giphy (2.0.2)
@@ -64,8 +65,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  daemons
   slack-ruby-bot
   wunderground
 
 BUNDLED WITH
-   1.10.6
+   1.10.5
