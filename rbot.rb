@@ -1,5 +1,6 @@
 require 'daemons'
 require 'slack-ruby-bot'
+require 'open-uri'
 require './lib/patches'
 require './config'
 
