@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+
 require 'daemons'
 require 'slack-ruby-bot'
 require 'open-uri'
