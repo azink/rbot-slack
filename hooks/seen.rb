@@ -37,7 +37,7 @@ class Seen < SlackRubyBot::Commands::Base
   end
 
   match(/^!seen\s(?<args>.+$)/i) do |client, data, match|
-    row = DB[:last].where(:nick => match[:args].delete("@")).first
+    row = DB[:last].where(:nick => match[:args].delete("@")).order(Sequel.desc(:at)).first
     msg =
       if row
         format_seen(row)
