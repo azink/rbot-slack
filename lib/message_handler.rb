@@ -2,7 +2,10 @@
 class MessageHandler < SlackRubyBot::Commands::Base
   match_all do |client, data, match|
     # update last table for !seen
-    DB['INSERT OR REPLACE INTO last VALUES(?, ?, ?, ?);', find_user(client, data.user)['name'], data.channel, data.text, Time.now.to_i].all
+    user = find_user(client, data.user)
+    username = user.nil? ? data.user : user['name']
+
+    DB['INSERT OR REPLACE INTO last VALUES(?, ?, ?, ?);', username, data.channel, data.text, Time.now.to_i].all
 
     # write to log
     dir = "#{$rbot_root}/log/#{data.channel}"
