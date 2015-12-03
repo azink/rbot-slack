@@ -5,8 +5,8 @@ class W < SlackRubyBot::Commands::Base
     
     location = match[:args].nil? ? find_user(client, data.user)['profile']['title'] : match[:args]
 
-    if location.nil?
-      client.message text: "Report the current conditions of a location. Specify a city, zip, or PWS ID.  To set a default location, edit the 'What I do' field in your Slack profile.", channel: data.channel
+    if location.nil? or location.empty?
+      client.message text: "Report the current conditions of a location. Specify a city, zip, or PWS ID.  To set a default location, edit the 'What I do' field in your Slack profile.  Then type !debug restart (because user profiles are cached :vroll:)", channel: data.channel
     else
       w = Wunderground.new(ENV['WUNDERGROUND_KEY'])
       wx = w.conditions_for(location)['current_observation']

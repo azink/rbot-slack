@@ -12,7 +12,7 @@ class DebugDatadump < SlackRubyBot::Commands::Base
     client.message text: "Attempting to restart rb... :stuck_out_tongue_closed_eyes: :gun:", channel: data.channel
 
     pid = Process.fork do
-      `cd #{File.dirname(__FILE__)}/.. && ruby rbot.rb restart`
+      `cd #{$rbot_root} && ruby rbot.rb restart`
     end
   end
 end

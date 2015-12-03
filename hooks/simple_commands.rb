@@ -10,8 +10,4 @@ class SimpleCommands < SlackRubyBot::Commands::Base
   match(/^!(seen|next)/i) do |client, data, match|
     client.message text: "This isn't 1999, you graybeard.  Use direct messages or @username for !next, and search for !seen.", channel: data.channel
   end
-
-  match(/^!2test/i) do |client, data, match|
-    client.message text: "win", channel: data.channel
-  end
 end 

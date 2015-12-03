@@ -1,11 +1,12 @@
 #!/usr/bin/env ruby
-# encoding: utf-8
 
+$rbot_root = File.expand_path(File.dirname(__FILE__))
 require 'daemons'
 require 'slack-ruby-bot'
 require 'open-uri'
-require './lib/patches'
-require './config'
+require_relative 'config'
+require_relative 'lib/patches'
+require_relative 'lib/db'
 
 module Rbot
   class App < SlackRubyBot::App
