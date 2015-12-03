@@ -1,6 +1,6 @@
 # Bitcoins
 class Bitcoin < SlackRubyBot::Commands::Base
-  match(/^!(btc|bitcoin)/i) do |client, data, match|
+  match(/^!(btc|bitcoin)$/i) do |client, data, match|
     require 'json'
 
     body = open("https://blockchain.info/ticker").read
