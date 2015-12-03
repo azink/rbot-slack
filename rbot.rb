@@ -12,7 +12,11 @@ module Rbot
   class App < SlackRubyBot::App
   end
 
-  Dir['./hooks/*.rb'].each {|f| load f}
+  # generic message handler for all messages
+  require_relative 'lib/message_handler'
+
+  # Load hooks
+  Dir["#{$rbot_root}/hooks/*.rb"].each {|f| load f}
 end
 
 Daemons.run_proc('rbot-slack', {:log_output => true, :backtrace => true, :dir => 'log'}) do 

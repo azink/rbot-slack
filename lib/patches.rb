@@ -13,6 +13,11 @@ module SlackRubyBot
       def self.find_user(client, id)
         client.users.find {|f| f['id'] == id}
       end
+
+      # match all messages
+      def self.match_all(&block)
+        match Regexp.new(".*", Regexp::IGNORECASE), &block
+      end
     end
   end
 end
