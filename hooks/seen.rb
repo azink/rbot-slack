@@ -33,11 +33,11 @@ class Seen < SlackRubyBot::Commands::Base
       end
       at << ' ago'
     end
-    "[#{at}] #{row[:chan]} <#{row[:nick]}> #{row[:stmt]}"
+    "[#{at}] <#{row[:nick]}> #{row[:stmt]}"
   end
 
   match(/^!seen\s(?<args>.+$)/i) do |client, data, match|
-    row = DB[:last].where(Sequel.like(:nick, match[:args].delete("@")), :chan => data.channel).first
+    row = DB[:last].where(Sequel.like(:nick, "%#{match[:args].delete("@")}%")).first
     msg =
       if row
         format_seen(row)

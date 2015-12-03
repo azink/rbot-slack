@@ -4,8 +4,9 @@ class MessageHandler < SlackRubyBot::Commands::Base
     # update last table for !seen
     user = find_user(client, data.user)
     username = user.nil? ? data.user : user['name']
-
-    DB['INSERT OR REPLACE INTO last VALUES(?, ?, ?, ?);', username, data.channel, data.text, Time.now.to_i].all
+    unless username.nil?
+      DB['INSERT OR REPLACE INTO last VALUES(?, ?, ?, ?);', username, data.channel, data.text, Time.now.to_i].all
+    end
 
     # write to log
     dir = "#{$rbot_root}/log/#{data.channel}"
