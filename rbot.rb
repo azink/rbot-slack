@@ -8,6 +8,9 @@ require_relative 'config'
 require_relative 'lib/patches'
 require_relative 'lib/db'
 
+# Make sure log/pid dir exists
+Dir.mkdir("#{$rbot_root}/log") unless File.directory?("#{$rbot_root}/log")
+
 module Rbot
   class App < SlackRubyBot::App
   end
