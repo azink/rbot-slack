@@ -5,6 +5,8 @@ class Timecube < SlackRubyBot::Commands::Base
     body.gsub!(/[\r\n]+/, " ")
     body.gsub!(/<\/?\w+((\s+\w+(\s*=\s*(?:".*?"|'.*?'|[^'">\s]+))?)+\s*|\s*)\/?>/, "")
     body.gsub!("&nbsp;", "")
+    body.gsub!("&quot;", "")
+    body.gsub!("**", "")
     line = body.split(". ").sample
     client.message text: line, channel: data.channel
   end
