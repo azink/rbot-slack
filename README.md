@@ -22,6 +22,7 @@ Simply add .txt files to db/txt and random_line.rb will pick them up on launch. 
 * !points, !--, !++ - Add to or subrtract from the value of something
 * !stock - Show stock information for a given symbol
 * !timecube - You cannot comprehend this hook
+* !timetil - Duration until something
 * !ud - Get Urban Dictionary definitions
 * !update - Update from git and reload hooks
 * !w - gets the weather from wunderground.  For a default location, edit the "what I do" field in your profile
