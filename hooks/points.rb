@@ -18,7 +18,7 @@ class Points < SlackRubyBot::Commands::Base
   end
 
   # ++: increment item
-  match(/^!\+\+\s(?<args>.+$)/i) do |client, data, match|
+  match(/^!\+\+\s(?<args>\S+)/i) do |client, data, match|
     what = match[:args].downcase
     q = DB[:points].filter(:thing => what)
     row = q.first
@@ -33,7 +33,7 @@ class Points < SlackRubyBot::Commands::Base
   end
 
   # ++: decrement item
-  match(/^!--\s(?<args>.+$)/i) do |client, data, match|
+  match(/^!--\s(?<args>\S+)/i) do |client, data, match|
     what = match[:args].downcase
     q = DB[:points].filter(:thing => what)
     row = q.first
