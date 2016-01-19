@@ -17,6 +17,7 @@ Simply add .txt files to db/txt and random_line.rb will pick them up on launch. 
 * !bitcoin - Show current Bitcoin price (Alias: !btc)
 * !calc - BC calculator
 * !conv - Converter and math engine using Wolfram Alpha (Alias: !ask)
+* !domain - Look up domain
 * !flip - Flip text
 * !hungry - Generate a delicious meal
 * !points, !--, !++ - Add to or subrtract from the value of something
