@@ -4,7 +4,7 @@ class Domain < SlackRubyBot::Commands::Base
     if match[:args].nil?
       out = "!domain <string>.  Look up a domain."
     else    
-      args = match[:args][/\w+\.\w+/]
+      args = match[:args][/\|(.+\..+)>/,1]
       r = Whois::Client.new.lookup(args)
       if r.available?
         out = "#{args} available"
