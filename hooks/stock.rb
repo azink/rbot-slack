@@ -18,7 +18,7 @@ class Stock < SlackRubyBot::Commands::Base
   end
 
   match(/^!stock($|\s(?<args>.+$))/i) do |client, data, match|
-    body = open("http://finance.yahoo.com/d/quotes.csv?f=sl1d1t1c1p2n&s=#{match[:args]}").read
+    body = open("https://finance.yahoo.com/d/quotes.csv?f=sl1d1t1c1p2n&s=#{match[:args]}").read
     #symbol,price,date,time,change,pct,name
     #"GOOG", "820.34", "3/14/2013", "1:02pm", "-4.97", "-0.60%", "Google Inc."] 
     if (quote = parse_quote(body))
