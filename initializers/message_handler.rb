@@ -10,6 +10,7 @@ module SlackRubyBot
       def message(client, data)
         data = Hashie::Mash.new(data)
         user = SlackRubyBot::Commands::Base.find_user(client, data.user)
+        puts user.inspect
         username = user.nil? ? data.user : user['name']
         unless username.nil?
           # update last table for !seen
