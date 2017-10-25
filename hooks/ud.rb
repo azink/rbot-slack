@@ -2,7 +2,7 @@ class UrbanDictionary < SlackRubyBot::Commands::Base
   match(/^!ud($|\s(?<args>.+$))/i) do |client, data, match|
     require 'nokogiri'
     require 'numbers_in_words'
-    doc = Nokogiri::HTML(open("http://www.urbandictionary.com/define.php?term=#{match[:args]}"))
+    doc = Nokogiri::HTML(open("https://www.urbandictionary.com/define.php?term=#{match[:args]}"))
     meanings = doc.css("div.meaning").map {|x| x.text.strip}.select {|x| x.length <= 1024}[0..2]
 
     if meanings[0] =~ /any definitions for/
