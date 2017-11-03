@@ -1,30 +1,22 @@
 # Stocks
 class Stock < SlackRubyBot::Commands::Base
-  def self.parse_quote(body)
-    require "csv"
-    s = CSV.parse(body).first
-    symbol = s[0]
-    price = s[1]
-    date = s[2]
-    time = s[3]
-    change = s[4]
-    changepc = s[5]
-    stockname = s[6]
-
-    return nil if s[0] == "MISSING SYMBOLS LIST."
-    return nil if s[4] == "N/A"
-
-    "#{stockname} (#{symbol.upcase}): #{price} #{change} #{changepc} last trade #{date} #{time}"
-  end
-
   match(/^!stock($|\s(?<args>.+$))/i) do |client, data, match|
-    body = open("https://download.finance.yahoo.com/d/quotes.csv?f=sl1d1t1c1p2n&s=#{match[:args]}").read
-    #symbol,price,date,time,change,pct,name
-    #"GOOG", "820.34", "3/14/2013", "1:02pm", "-4.97", "-0.60%", "Google Inc."] 
-    if (quote = parse_quote(body))
-      out = quote
+    require 'json'
+    info = JSON.parse(open("https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=#{match[:args]}&interval=1min&apikey=#{ENV['ALPHA_KEY']}").read)
+    if (info['Meta Data'])
+      s_name = info['Meta Data']['2. Symbol'].upcase
+      s_open = info['Time Series (Daily)'].first[1]['1. open'].to_f
+      s_close = info['Time Series (Daily)'].first[1]['4. close'].to_f
+      s_high = info['Time Series (Daily)'].first[1]['2. high'].to_f
+      s_low = info['Time Series (Daily)'].first[1]['3. low'].to_f
+      s_change = (s_close - s_open).round(2)
+      s_pct = ((s_change / s_open) * 100).round(2)
+      s_change = "+#{s_change}" if s_change > 0
+      s_pct = "+#{s_pct}" if s_pct > 0
+
+      out = "#{s_name} - Last: #{s_close}, (#{s_change}, #{s_pct}%); high: #{s_high}, low: #{s_low}"
     else
-      out = "Error parsing quote for #{$args}"
+      out = "Error parsing quote for #{match[:args]}. Check the symbol and try again."
     end
     client.message text: out, channel: data.channel
   end
