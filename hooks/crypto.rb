@@ -3,7 +3,7 @@ class CryptoCurrency < SlackRubyBot::Commands::Base
   match(/^!crypto($|\s(?<args>.+$))/i) do |client, data, match|
     require 'json'
 
-    def format_currency(num)
+    def self.format_currency(num)
       sprintf('%.2f',num).gsub('.00','').reverse.scan(/(\d*\.\d{1,3}|\d{1,3})/).join(',').reverse
     end
 
