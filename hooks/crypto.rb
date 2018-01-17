@@ -1,6 +1,6 @@
 # Crypto currency 
 class CryptoCurrency < SlackRubyBot::Commands::Base
-  match(/^!crypto($|\s(?<args>.+$))/i) do |client, data, match|
+  match(/^!(crypto|btc)($|\s(?<args>.+$))/i) do |client, data, match|
     require 'json'
 
     def self.format_currency(num)
