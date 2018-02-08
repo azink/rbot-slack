@@ -65,8 +65,6 @@ class Flip < SlackRubyBot::Commands::Base
         "!" => [0x0A1].pack('U'),
         "'" => ",",
         '"' => [0x201E].pack('U'),
-        "<" => ">",
-        ">" => "<",
         "_" => [0x203E].pack('U'),
         '&' => [0x214B].pack('U'),
         [0x203F].pack('U') => [0x2040].pack('U'),
@@ -88,7 +86,7 @@ class Flip < SlackRubyBot::Commands::Base
         revtext << char
       end
 
-      flipped = revtext.reverse.join('').gsub(")-;","(-;").gsub(")-:","(-:").gsub(");","(;").gsub(");","(;").gsub("(-:",")-:").gsub("(:","):").gsub("#{table["D"]}:","#{table["D"]}-:") #implement more common smiley correction
+      flipped = revtext.reverse.join('')
 
       rn = rand
       if rand <= 0.2
