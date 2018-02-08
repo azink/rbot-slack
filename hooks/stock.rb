@@ -5,7 +5,7 @@ class Stock < SlackRubyBot::Commands::Base
     info = JSON.parse(open("https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=#{match[:args]}&interval=1min&apikey=#{ENV['ALPHA_KEY']}").read)
     if (info['Meta Data'])
       s_name = info['Meta Data']['2. Symbol'].upcase
-      y_close = info['Time Series (Daily)'][1][1]['1. open'].to_f
+      y_close = info['Time Series (Daily)'][1][1]['4. close'].to_f
       s_close = info['Time Series (Daily)'].first[1]['4. close'].to_f
       s_high = info['Time Series (Daily)'].first[1]['2. high'].to_f
       s_low = info['Time Series (Daily)'].first[1]['3. low'].to_f
