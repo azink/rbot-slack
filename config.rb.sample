@@ -3,4 +3,4 @@
 ENV['DB_URI'] = "sqlite://#{$rbot_root}/db/rbot.db"
 ENV['SLACK_API_TOKEN'] = 'your slack API token'
 ENV['WOLFRAM_ID'] = 'wolfram alpha key for !conv'
-ENV['ALPHA_KEY'] = 'alphavantage key for !stock'
+ENV['RAPID_API_KEY'] = 'RapidAPI key for !stock'
