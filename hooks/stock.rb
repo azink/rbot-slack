@@ -33,13 +33,13 @@ class Stock < SlackRubyBot::Commands::Base
       s_high = ticker['regularMarketDayHigh']
       s_low = ticker['regularMarketDayLow']
       if (ticker['postMarketPrice'])
-	      a_price = ticker['postMarketPrice']
-  	    a_change = ticker['postMarketChange'].round(2)
-    	  a_change_pct = ticker['postMarketChangePercent'].round(2)
-			  out = "#{s_name} (#{s_symbol}, #{s_exchange}) - Last close: #{s_price}, (#{s_change}, #{s_change_pct}%); high: #{s_high}, low: #{s_low}. Post-market: #{a_price}, (#{a_change}, #{a_change_pct}%)"
+        a_price = ticker['postMarketPrice']
+        a_change = ticker['postMarketChange'].round(2)
+        a_change_pct = ticker['postMarketChangePercent'].round(2)
+        out = "#{s_name} (#{s_symbol}, #{s_exchange}) - Last close: #{s_price}, (#{s_change}, #{s_change_pct}%); high: #{s_high}, low: #{s_low}. Post-market: #{a_price}, (#{a_change}, #{a_change_pct}%)"
       else
-				out = "#{s_name} (#{s_symbol}, #{s_exchange}) - Last close: #{s_price}, (#{s_change}, #{s_change_pct}%); high: #{s_high}, low: #{s_low}"
-    	end
+        out = "#{s_name} (#{s_symbol}, #{s_exchange}) - Last close: #{s_price}, (#{s_change}, #{s_change_pct}%); high: #{s_high}, low: #{s_low}"
+      end
     end
     client.message text: out, channel: data.channel
   end
