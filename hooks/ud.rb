@@ -3,7 +3,10 @@ class UrbanDictionary < SlackRubyBot::Commands::Base
     require 'nokogiri'
     require 'numbers_in_words'
     doc = Nokogiri::HTML(open("https://www.urbandictionary.com/define.php?term=#{match[:args]}"))
-    meanings = doc.css("div.meaning").map {|x| x.text.strip}.select {|x| x.length <= 1024}[0..2]
+    meanings = doc.css("div.meaning").map {|x| x.text.strip}.select {|x| x.length <= 1024}[0..3]
+
+    # hax to remove word of the day
+    arr.delete_at(1)
 
     if meanings[0] =~ /any definitions for/
       client.message text: "whoa there hep cat, your jive is too fresh for urban dictionary!", channel: data.channel  
