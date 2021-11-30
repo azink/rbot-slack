@@ -1,6 +1,6 @@
 # Conversions using Wolfram Alpha
 class Conv < SlackRubyBot::Commands::Base
-  match(/^!(conv|ask|calc)($|\s(?<args>.+$))/i) do |client, data, match|
+  match(/^!(conv-rb|ask-rb|calc-rb)($|\s(?<args>.+$))/i) do |client, data, match|
     require 'wolfram'
 
     Wolfram.appid = ENV['WOLFRAM_ID']
